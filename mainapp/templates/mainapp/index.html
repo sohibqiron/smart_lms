@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rolling Stone Top 500 albums of all time</title>
+  <meta name="description" content="Rolling Stone magazine's 2012 list of 500 greatest albums of all time with genres.">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <table id="products" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Warehouse</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Sku</th>
+              <th>Date</th>
+              <th>Total_amount</th>
+              <th>Sales_price</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+      $(document).ready(function() {
+          $('#products').DataTable({
+              'serverSide': true,
+              'ajax': 'http://127.0.0.1:8003/users/?format=datatables',
+              'columns': [
+                  {'data': 'user'},
+                  {'data': 'warehouse', 'searchable': true},
+                  {'data': 'name', 'searchable': true},
+                  {'data': 'price', 'searchable': true},
+                  {'data': 'quantity'},
+                  {'data': 'sku'},
+                  {'data': 'date', 'searchable': true},
+                  {'data': 'total_amount', 'searchable': true},
+                  {'data': 'sales_price', 'searchable': true},
+              ]
+
+          });
+      });
+  </script>
+</body>
+</html>
